@@ -1,0 +1,43 @@
+# MOVE TO
+- `\path` ... `<coordinate>` ...`;`
+- Moves "cursor" to the specified coordinate
+
+# LINE TO
+- `\path` ... `--<coordinate | "cycle">` ...`;`
+- Draws a line from the "cursor" to the specified coordinate
+- If `cycle`, draws a line from the "cursor" to the beginning of the path
+
+# HORIZONTAL AND VERTICAL LINES
+- `\path` ... `-|<coordinate | "cycle">` ...`;`
+- `\path` ... `|-<coordinate | "cycle">` ...`;`
+
+# CURVE TO
+- `\path` ... `..controls <c> and <d> .. <y | "cycle">` ...`;`
+- Draws a Bézier curve from the "cursor" `x` to the specified point `y`
+- `c` and `d` are control points.
+- Curve starts at `x` "heading to" `c` (Tangent of the curve at `x` goes through `c`)
+- Curve ends at `y` "coming from" `d`
+- The larger the distance between `x`/`c` and `d`/`y`, the larger the curve will be
+- If `and <d>` is not given, `d` is assumed equal to `c`
+
+# TO PATH
+- `\path` ... `to[<options>] <nodes> <coordinate | "cycle">` ...`;`
+  - `<nodes>`: Added nodes to paths
+  - Options:
+    - `out`: Outgoing angle at beginning
+    - `in`: Incoming angle at ending
+    - edge label('): Label shortcuts
+
+# CIRCLE
+- `\path` ... `<coordinate> circle (<radius>)`
+
+# COORDINATES
+- POLAR: `(<angle (degrees)>:<radius>)`
+- CARTESIAN: `(<x>,<y>)`
+- RELATIVE:
+  + `++<coordinate>` (Updating)
+  + `+<coordinate>` (Non-updating)
+  + In Bézier Curves:
+     + First relative pt is relative to start
+     + Second relative pt is relative to end
+     + End relative pt is relative to start

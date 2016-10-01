@@ -1,0 +1,49 @@
+% Henrison Hsieh's neglected Phonology macro package
+\ProvidesPackage{ling-phon}
+
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tipa}
+\RequirePackage{pifont}      %for pointing hand
+\RequirePackage{arydshln}    %for dashed lines
+
+
+\newcommand{\ip}[1]{\textipa{#1}}
+
+% BEAUTIFUL TABLEAU CODE
+\newcounter{OTnum}            % Candidate Counter
+\newenvironment{tableau}[3]{
+  \setcounter{OTnum}{0}
+  \begin{center}
+  \begin{tabular}{|rrl||#2|}
+  \hline
+  \multicolumn{3}{|l||}{Input:~\ip{/#1/}} & #3 \\ [0.25ex]\hline\hline
+}{
+  \end{tabular}
+  \end{center}
+}
+\newcommand{\cdte}[3][]{\
+  #1 & \stepcounter{OTnum}\alph{OTnum}. & #2 & #3 \\\hline
+}
+\newcommand{\cand}[3][]{\cdte[#1]{\ip{#2}}{#3}}
+\newcommand{\wnnr}[2]{\cand[\ding{43}]{#1}{#2}}
+\newcommand{\mult}[6][]{
+     &                                  & \ip{#2}          & #6 \\[-0.6ex]
+  #1 & \stepcounter{OTnum}\alph{OTnum}. & #3               & #5 \\[-0.6ex]
+     &                                  & \footnotesize #4 & #6 \\\hline
+}
+
+\newcounter{tableau}        % Tableau Counter
+\newcommand{\tablabel}[2]{
+  \refstepcounter{tableau}
+  \begin{center}
+  \vspace{-0.75em}
+    Tableau \arabic{tableau}\label{#1}: #2
+  \end{center}
+}
+% /BEAUTIFUL TABLEAU CODE
+
+\newcommand{\rank}[2]{{\sc #1 $\gg$ #2}}
+
+\endinput

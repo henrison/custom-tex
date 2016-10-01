@@ -1,0 +1,63 @@
+## Test input file for extract-tex.py
+
+
+\gll \textbf{Ita\*taxi} \textbf{ni} \textbf{Armi} ang mga gamit niya.\\
+  \g{fut.cv\*red}taxi \g{gen} Armi \g{nom} \g{pl} thing \g{3s.gen}\\
+\gls{Armi \uline{is going to transport} her things \uline{by taxi}.}
+
+
+\ex{\label{ex:doctor-arg}
+  \gll K\ix{in}ausap ko \textbf{ang} \textbf{magdo\*doktor}.\\
+    \gix{pfv}speak.with \g{1s.gen} \g{nom} \g{fut.av}\*doctor\\
+  \gls{I talked to \uline{the one who will become a doctor}.}
+
+
+  \gll S\ix{in}abi ko sa mga bata ang \bn{aral} ng kwento=ng ito.\\
+    \gix{pfv}say.\g{pv} \g{1s.gen} \g{obl} \g{pl} child \g{nom} learn \g{gen} story=\g{lk} this\\
+  \gls{I told the children the moral of this story.}
+
+
+  \gll \bn{Aral} ng kwento=ng ito ang pagiging masunurin.\\
+    learn \g{gen} story=\g{lk} this \g{nom} being obedient\\
+  \gls{Being obedient is the moral of this story.}
+
+
+  \fnex{
+    \gll Gusto niya=ng [\vp{mag-basa} ng libro] (si May).\\
+      want \g{3s.gen=lk} \g{av}-read \g{gen} book \g{nom} May\\
+    \gls{He wants (May) to read books.}
+  }
+  \fnex{
+    \gll Gusto niya=ng [\vp{basah-in} (ni May)] ang libro.\\
+      want \g{3s.gen=lk} read-\g{pv} \g{gen} May \g{nom} book\\
+    \gls{He wants (May) to read the book.}
+  }
+
+HELLO \g{nest\ix{nested}after} my name is test-extract
+
+
+
+Building on this initial picture from \citet{richards_copula}, I show in what follows that the behavior of \textit{maging}%
+% Footnote
+\footnote{\label{fn:become}%
+  \citet{richards_copula} provides an analysis of \textit{maging} as the overt infinitival form of the Tagalog copula whose form in matrix contexts is \textit{\O}.
+  I follow \citeauthor{richards_copula} in glossing \textit{maging} as `be', but the discussion in this section should be agnostic to the analysis of this element.
+  It also bears pointing out that \textit{maging} is often translated, especially in isolation, as English \textit{become}.
+  \citeauthor{richards_copula} ties this \textit{\O}$\sim$\textit{maging} alternation to a broader stative--inchoative alternation in the language.
+  As with the control constructions, other potentially significant but tangential datapoints are given in footnotes.}
+% /Footnote
+follows the same pattern of asymmetry and neutralization presented so far in this section.
+I then point other evidence from this environment that supports a view where relativization is the cause for the nominal behavior of some voice phrases (i.e., the headless relatives).
+
+First, I extend \citet{richards_copula} by showing that derived nominals behave like bare nominals and not voice phrases.
+This is shown in the pairs of examples below (\ref{ex:gusto-luto}-\ref{ex:gusto-lagay}).
+As with bare nominals (\ref{ex:maging-noun}), \textit{maging} is obligatory with derived nominals (\ref{ex:gusto-luto-n}, \ref{ex:gusto-lagay-n}), replicating what we have seen thus far.
+Furthermore, notice that the voice phrase examples are not marked with aspect.%
+% Footnote
+\footnote{%
+  Or are marked for some deficient or semantically non-contentful value of aspect.
+  For example, \citet{himmelmann2008} refers to this form of the verb as irrealis perfective.}
+
+
+
+  Argument \textit{wh}-questions like (\ref{ex:qa-nom}) have been argued to involve pseudocleft structures, where an \textit{ang}-marked \textit{wh}-word appears as a predicate and an \textit{ang}-marked headless relative appears in subject position \citep{paul2001,aldridge2002,potsdam2006}. Work that deals with this issue \citep[e.g.,][]{alexiadou2008,baker.vinokurova2009} usually ties the syntactic height of the nominalizers intimately with the resulting interpretation as well as a number of other properties (e.g., ability to host certain kinds of adverbs, availability of argument structure, etc.).
