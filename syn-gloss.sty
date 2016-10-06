@@ -52,8 +52,8 @@
 }
 \newcommand{\helpline}[4]{
   \regline{#1}{#2}{#3}{#4}
-  \fill[color=red] (#1) circle (2pt) +(#2) circle (2pt)
-                   (#4) circle (2pt) +(#3) circle (2pt);
+  \fill[color=red]  (#1) circle (2pt)  (#4) circle (2pt);
+  \fill[color=blue] (#1)+(#2) circle (2pt) (#4)+(#3) circle (2pt);
 }
 % Allows tree labels to break across multiple lines
 \newcommand{\treebr}{\tikzset{every tree node/.style={align=center,anchor=north}}}
