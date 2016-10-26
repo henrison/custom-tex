@@ -38,6 +38,11 @@
   \PassOptionsToPackage{twocolumn,landscape}{geometry}
 }
 
+\newif\if@defaultbib \@defaultbibfalse
+\DeclareOption{defaultbib}{
+  \@defaultbibtrue
+}
+
 \DeclareOption{draft}{
   \PassOptionsToPackage{showframe}{geometry}
 }
@@ -94,10 +99,13 @@
 \RequirePackage{framed}
 
 % BIBLIOGRAPHY
-\RequirePackage[authoryear,sectionbib,comma]{natbib}
-
-\setcitestyle{aysep={}}   % Bibliography citation formatting
-\bibliographystyle{linquiry2}
+\if@defaultbib
+  \RequirePackage[authoryear]{natbib}
+\else
+  \RequirePackage[authoryear,sectionbib,comma]{natbib}
+  \setcitestyle{aysep={}}   % Bibliography citation formatting
+  \bibliographystyle{linquiry2}
+\fi
 
 %%%%%%%%%%%%%%%%
 %%% COMMANDS %%%
