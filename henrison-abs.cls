@@ -22,8 +22,9 @@
 %%%%%%%%%%%%%%%%
 %%% COMMANDS %%%
 %%%%%%%%%%%%%%%%
-\newcommand{\abssec}[1]{\textbf{\uline{\textsc{#1:}}}}
-\newcommand{\abstitle}[1]{{\centering\textbf{#1}\vspace{0.5em}\par}}
+% \newcommand{\abssec}[1]{\textbf{\uline{\textsc{#1:}}}}
+\newcommand{\abssec}[1]{\paragraph{\textsc{#1}}}
+\newcommand{\abstitle}[1]{\paragraph{\large#1}~\vspace{-3ex}}
 
 \newlength{\shrinklength}
 \setlength{\shrinklength}{-0.5em}
