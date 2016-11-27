@@ -30,7 +30,7 @@
 \newcommand{\shrink}{\vspace{\shrinklength}}
 
 % Bib formatting
-\renewcommand{\bibsection}{\noindent\abssec{Selected References}\vspace{-4pt}}
+\renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-3ex}}
 \renewcommand{\bibfont}{\small}
 \setlength{\bibsep}{0pt}
 
