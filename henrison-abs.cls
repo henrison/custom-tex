@@ -29,6 +29,11 @@
 \setlength{\shrinklength}{-0.5em}
 \newcommand{\shrink}{\vspace{\shrinklength}}
 
+% Bib formatting
+\renewcommand{\bibsection}{\noindent\abssec{Selected References}\vspace{-4pt}}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{0pt}
+
 \if@times
   \RequirePackage{mathptmx}
 \fi
