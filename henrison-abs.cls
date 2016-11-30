@@ -8,6 +8,8 @@
 \DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{henrison}}
 \DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{henrison}}
 
+\DeclareOption{nobib}{\PassOptionsToClass{\CurrentOption}{henrison}}
+
 \newif\if@times \@timesfalse
 \DeclareOption{times}{\@timestrue}
 

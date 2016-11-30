@@ -38,9 +38,9 @@
   \PassOptionsToPackage{twocolumn,landscape}{geometry}
 }
 
-\newif\if@defaultbib \@defaultbibfalse
-\DeclareOption{defaultbib}{
-  \@defaultbibtrue
+\newif\if@nobib \@nobibfalse
+\DeclareOption{nobib}{
+  \@nobibtrue
 }
 
 \DeclareOption{draft}{
@@ -99,8 +99,7 @@
 \RequirePackage{framed}
 
 % BIBLIOGRAPHY
-\if@defaultbib
-  \RequirePackage[authoryear]{natbib}
+\if@nobib
 \else
   \RequirePackage[authoryear,sectionbib,comma]{natbib}
   \setcitestyle{aysep={}}   % Bibliography citation formatting
