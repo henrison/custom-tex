@@ -8,7 +8,11 @@
 \DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{henrison}}
 \DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{henrison}}
 
-\DeclareOption{nobib}{\PassOptionsToClass{\CurrentOption}{henrison}}
+\newif\if@nobib \@nobibfalse
+\DeclareOption{nobib}{%
+  \PassOptionsToClass{\CurrentOption}{henrison}%
+  \@nobibtrue%
+}
 
 \newif\if@times \@timesfalse
 \DeclareOption{times}{\@timestrue}
@@ -32,9 +36,12 @@
 \newcommand{\shrink}{\vspace{\shrinklength}}
 
 % Bib formatting
-\renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-3ex}}
-\renewcommand{\bibfont}{\small}
-\setlength{\bibsep}{0pt}
+\if@nobib
+\else
+  \renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-3ex}}
+  \renewcommand{\bibfont}{\small}
+  \setlength{\bibsep}{0pt}
+\fi
 
 \if@times
   \RequirePackage{mathptmx}
