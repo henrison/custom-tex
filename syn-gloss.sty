@@ -6,7 +6,6 @@
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tikz-qtree}
-\RequirePackage{gb4e}
 \RequirePackage{multicol}
 \RequirePackage{xspace}
 \RequirePackage{setspace}
@@ -18,13 +17,11 @@
 \DeclareOption{single}{\@singletrue}
 \DeclareOption{double}{\@singlefalse}
 
+\newif\if@expex \@expexfalse
+\DeclareOption{expex}{\@expextrue}
+
 \ExecuteOptions{single}
 \ProcessOptions\relax
-
-% gb4e settings
-\noautomath % Disable gb4e automath
-\let\eachwordtwo=\small   % Gloss-Level
-\let\eachwordthree=\small % Gloss-Level if Morpheme Level is present
 
 \newcommand{\glp}[3][ ]{\textit{#2}#1`#3'}
 
@@ -41,10 +38,6 @@
 \newcommand{\gix}[1]{\g{\ix{#1}}}
 \newcommand{\bl}[1][~~~~~~~~]{\uline{#1}\xspace}
 \renewcommand{\*}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} % "~" hack
-
-\newcommand{\gls}[2][]{\glt{`#2'\hfill\textit{#1}}}
-\newcommand{\gli}[2][]{\glt{Intended: `#2'#1}}
-\newcommand{\glf}[3][]{\glt{`#2'\footnote{#3}\hfill\textit{#1}}}
 
 % Line Drawing Macros
 \newcommand{\regline}[5][]{% {node1}{x1,y1}{x2,y2}{node2}
@@ -63,30 +56,49 @@
 \newcommand{\xbar}[1]{#1$'$}
 \newcommand{\xhead}[1]{#1\textdegree}
 
-%%%%%% Tweaking of the exe environment %%%%%%
-\if@single
-  \newenvironment{exxe}[1][(234)]{
-    \begin{multicols}{2}
-    \begin{exe}[#1]
-  }{
-    \end{exe}
-    \end{multicols}
-  }
-\else
-  % Automatically sets single spacing for examples.
-  % May screw up optional arguments for this environment, though.
-  % Will cause the exxe command to not work properly...
-  \let\oldexe\exe
-  \def\exe{\oldexe \singlespacing}
-  \newenvironment{exxe}[1][(234)]{
-    \begin{multicols}{2}
-    \begin{oldexe}[#1]
-    \singlespacing
-  }{
-    \end{list}
-    \end{oldexe}
-    \end{multicols}
-  }
+\if@expex
+  \RequirePackage{expex}
+  \lingset{everyglb=\small,
+           belowexskip=!-2ex,
+           aboveexskip=!-2ex,
+           interpartskip=!-0.75ex,
+           aboveglftskip=-0.75ex,
+           belowpreambleskip=0pt}
+\else % Use gb4e
+  \RequirePackage{gb4e}
+  \noautomath % Disable gb4e automath
+  \let\eachwordtwo=\small   % Gloss-Level
+  \let\eachwordthree=\small % Gloss-Level if Morpheme Level is present
+
+  \newcommand{\gls}[2][]{\glt{`#2'\hfill\textit{#1}}}
+  \newcommand{\gli}[2][]{\glt{Intended: `#2'#1}}
+  \newcommand{\glf}[3][]{\glt{`#2'\footnote{#3}\hfill\textit{#1}}}
+
+  %%%%%% Tweaking of the exe environment %%%%%%
+  \if@single
+    \newenvironment{exxe}[1][(234)]{
+      \begin{multicols}{2}
+      \begin{exe}[#1]
+    }{
+      \end{exe}
+      \end{multicols}
+    }
+  \else
+    % Automatically sets single spacing for examples.
+    % May screw up optional arguments for this environment, though.
+    % Will cause the exxe command to not work properly...
+    \let\oldexe\exe
+    \def\exe{\oldexe \singlespacing}
+    \newenvironment{exxe}[1][(234)]{
+      \begin{multicols}{2}
+      \begin{oldexe}[#1]
+      \singlespacing
+    }{
+      \end{list}
+      \end{oldexe}
+      \end{multicols}
+    }
+  \fi
 \fi
 
 % Counter and macro for running footnote example numbering
@@ -101,11 +113,6 @@
   \refstepcounter{FootnoteExample}%
   \exi{(\theFootnoteExample)}[#1]{#2}%
 }
-
-
-% Experimental \ex wrapper that includes a little bit of space before it
-\newcommand{\ez}[1]{\exsep\ex{#1}}
-\newcommand{\ej}[2]{\exsep\ex[#1]{#2}}
 
 
 % Some auxiliary judgement annotations (requires amssymb)
