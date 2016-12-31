@@ -56,14 +56,31 @@
 \newcommand{\xbar}[1]{#1$'$}
 \newcommand{\xhead}[1]{#1\textdegree}
 
+% Counter and macro for running footnote example numbering
+\newcounter{FootnoteExample}
+\renewcommand{\theFootnoteExample}{\roman{FootnoteExample}}
+
 \if@expex
   \RequirePackage{expex}
-  \lingset{everyglb=\small,
-           belowexskip=!-2ex,
-           aboveexskip=!-2ex,
-           interpartskip=!-0.75ex,
-           aboveglftskip=-0.75ex,
-           belowpreambleskip=0pt}
+  \lingset{
+    everyglb=\small,
+    belowexskip=!-2ex,
+    aboveexskip=!-2ex,
+    interpartskip=!-0.75ex,
+    aboveglftskip=-0.75ex,
+    belowpreambleskip=0pt}
+  \definelingstyle{footnote}{
+    everyglb=,
+    labeloffset=0.6em,
+    textoffset=0.6em,
+    exnotype=roman}
+  \let\oldfootnote\footnote
+  \renewcommand{\footnote}[1]{\oldfootnote{%
+    \keepexcntlocal%
+    \excnt=1%
+    \lingset{lingstyle=footnote}%
+    #1
+  }}
 \else % Use gb4e
   \RequirePackage{gb4e}
   \noautomath % Disable gb4e automath
@@ -85,8 +102,6 @@
     }
   \else
     % Automatically sets single spacing for examples.
-    % May screw up optional arguments for this environment, though.
-    % Will cause the exxe command to not work properly...
     \let\oldexe\exe
     \def\exe{\oldexe \singlespacing}
     \newenvironment{exxe}[1][(234)]{
@@ -98,22 +113,17 @@
       \end{oldexe}
       \end{multicols}
     }
+    \newcommand{\fnex}{\@ifstar\@fnex\@@fnex}
+    \newcommand{\@@fnex}[1]{%
+      \refstepcounter{FootnoteExample}%
+      \exi{(\theFootnoteExample)}{#1}%
+    }
+    \newcommand{\@fnex}[2]{%
+      \refstepcounter{FootnoteExample}%
+      \exi{(\theFootnoteExample)}[#1]{#2}%
+    }
   \fi
 \fi
-
-% Counter and macro for running footnote example numbering
-\newcounter{FootnoteExample}
-\renewcommand{\theFootnoteExample}{\roman{FootnoteExample}}
-\newcommand{\fnex}{\@ifstar\@fnex\@@fnex}
-\newcommand{\@@fnex}[1]{%
-  \refstepcounter{FootnoteExample}%
-  \exi{(\theFootnoteExample)}{#1}%
-}
-\newcommand{\@fnex}[2]{%
-  \refstepcounter{FootnoteExample}%
-  \exi{(\theFootnoteExample)}[#1]{#2}%
-}
-
 
 % Some auxiliary judgement annotations (requires amssymb)
 \newcommand{\ok}{\textsuperscript{\checkmark\hspace{-2pt}}}
