@@ -98,6 +98,9 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{framed}
 
+% booktabs toprule spacing (for captions)
+\setlength{\abovetopsep}{5pt}
+
 % BIBLIOGRAPHY
 \if@nobib
 \else
