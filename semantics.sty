@@ -12,7 +12,9 @@
 % \ProcessOptions\relax
 
 % Denotation
-\newcommand{\dn}[2][]{\ensuremath{ \left\llbracket #2 \right\rrbracket^{#1} }}
+\newcommand{\dn}{\@ifstar\@dn\@@dn}
+\newcommand{\@@dn}[2][]{\ensuremath{ \llbracket #2 \rrbracket^{#1} }}
+\newcommand{\@dn}[2][]{\ensuremath{ \left\llbracket #2 \right\rrbracket^{#1} }}
 \newcommand{\dndef}[3][]{\ensuremath{ \dn[#1]{\textit{#2}} = #3 }}
 
 \newcommand{\fnc}[1]{\ensuremath{ \textrm{#1} }}
@@ -20,8 +22,8 @@
 % Lambda Calculus
 \newcommand{\tp}[1]{\ensuremath{ {\langle #1 \rangle} }}
 \newcommand{\lam}{\@ifstar\@lam\@@lam}
-\newcommand{\@@lam}[2]{\ensuremath{ \left[\lambda #1 . #2 \right] }}
-\newcommand{\@lam}[2]{\ensuremath{ [\lambda #1 . #2 ] }}
+\newcommand{\@@lam}[2]{\ensuremath{ \lambda #1 \left[ #2 \right] }}
+\newcommand{\@lam}[2]{\ensuremath{ \lambda #1 [ #2 ] }}
 
 % Quantification
 \newcommand{\Op}{\@ifstar\@Op\@@Op}
