@@ -68,7 +68,7 @@
   %\setlength{\headheight}{0.5in}
   \geometry{top=1.25in,bottom=1in,headheight=0.5in}
   \if@twocol
-    \geometry{margin=0.5in, top=0.85in, bottom=0.85in, headheight=0.35in}
+    \geometry{margin=0.5in,top=0.85in,bottom=0.85in,headheight=0.35in,columnsep=0.3in}
   \fi
   \pagestyle{fancy}
 \fi
