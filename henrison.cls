@@ -96,10 +96,18 @@
 \RequirePackage{booktabs}
 \RequirePackage{xcolor}
 \RequirePackage[normalem]{ulem}
-\RequirePackage{framed}
+\RequirePackage{fancybox}
 
 % booktabs toprule spacing (for captions)
 \setlength{\abovetopsep}{5pt}
+\pdfstringdefDisableCommands{% Not the best fix for getting rid of the annoying warnings...
+  \def\citealt{}%
+  \def\citealp{}%
+  \def\citep{}%
+  \def\citet{}%
+  \def\citeauthor{}%
+  \def\citeyear{}%
+}
 
 % BIBLIOGRAPHY
 \if@nobib
