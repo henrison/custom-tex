@@ -12,6 +12,7 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{textcomp}
 \RequirePackage{amssymb}
+\RequirePackage{leipzig}
 
 \newif\if@single \@singlefalse
 \DeclareOption{single}{\@singletrue}
@@ -43,6 +44,10 @@
 \newcommand{\regline}[5][]{% {node1}{x1,y1}{x2,y2}{node2}
   \draw[->#1] (#2).. controls +(#3) and +(#4) ..(#5);
 }
+\newcommand{\labelline}[6][above,sloped]{% {node1}{x1,y1}{x2,y2}{node2}
+  \draw[->,dashed] (#2).. controls +(#3) and +(#4) ..
+    node[#1] {\footnotesize#6} (#5);
+}
 \newcommand{\helpline}[4]{
   \regline{#1}{#2}{#3}{#4}
   \fill[color=red]  (#1) circle (2pt)  (#4) circle (2pt);
@@ -59,6 +64,22 @@
 % Counter and macro for running footnote example numbering
 \newcounter{FootnoteExample}
 \renewcommand{\theFootnoteExample}{\roman{FootnoteExample}}
+
+\newleipzig{av}{av}{Agent Voice}
+\newleipzig{pv}{pv}{Patient Voice}
+\newleipzig{lv}{lv}{Locative Voice}
+\newleipzig{cv}{cv}{Circumstantial Voice}
+\newleipzig{rv}{reason}{``Reason'' Voice}
+\newleipzig{lk}{lk}{Linker}
+\newleipzig{stat}{stat}{Stative}
+\newleipzig{ay}{ay}{Predicate Inversion}
+\newleipzig{ger}{ger}{Gerund}
+\newleipzig{exis}{exis}{Existential}
+\newcommand{\Um}{\ix{\Av.\Pfv}}
+\newcommand{\Nag}{\Av.\Pfv}
+\newcommand{\In}{\ix{\Pfv}}
+\newcommand{\Ko}{\Fsg.\Gen}
+\newcommand{\Niya}{\Tsg.\Gen}
 
 \if@expex
   \RequirePackage{expex}
