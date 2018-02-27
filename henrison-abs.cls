@@ -50,7 +50,10 @@
 \setlength{\parindent}{15pt}
 \if@squeeze
   \setlength{\parskip}{0pt}
-  \renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-2ex}}
+  \if@nobib
+  \else
+    \renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-2ex}}
+  \fi
 \else
   \setlength{\parskip}{5pt}
 \fi
