@@ -25,6 +25,7 @@
 \ProcessOptions\relax
 
 \newcommand{\glp}[3][ ]{\textit{#2}#1`#3'}
+\newcommand{\extitle}[1]{\textbf{#1}}
 
 % Abbreviations listing
 \newcommand{\abrsep}{$=$}
@@ -79,19 +80,23 @@
 \newcommand{\Nag}{\Av.\Pfv}
 \newcommand{\In}{\ix{\Pfv}}
 
-\newcommand{\Ako}{\Fsg.\Nom}      \newcommand{\Kami}{\Fpl.\Excl.\Nom}
-                                  \newcommand{\Tayo}{\Fpl.\Incl.\Nom}
-\newcommand{\Ko}{\Fsg.\Gen}       \newcommand{\Namin}{\Fpl.\Excl.\Gen}
-                                  \newcommand{\Natin}{\Fpl.\Incl.\Gen}
-\newcommand{\Akin}{\Fsg.\Obl}     \newcommand{\Amin}{\Fpl.\Excl.\Obl}
-                                  \newcommand{\Atin}{\Fpl.\Incl.\Obl}
-\newcommand{\Ka}{\Ssg.\Nom}       \newcommand{\Kayo}{\Spl.\Nom}
+\newcommand{\Ang}{\Nom}
+\newcommand{\Ng}{\Gen}
+\newcommand{\Sa}{\Obl}
+
+\newcommand{\Ako}{\Fsg.\Ang}  \newcommand{\Kami}{\Fpl.\Excl.\Ang}
+                              \newcommand{\Tayo}{\Fpl.\Incl.\Ang}
+\newcommand{\Ko}{\Fsg.\Ng}    \newcommand{\Namin}{\Fpl.\Excl.\Ng}
+                              \newcommand{\Natin}{\Fpl.\Incl.\Ng}
+\newcommand{\Akin}{\Fsg.\Sa}  \newcommand{\Amin}{\Fpl.\Excl.\Sa}
+                              \newcommand{\Atin}{\Fpl.\Incl.\Sa}
+\newcommand{\Ka}{\Ssg.\Ang}   \newcommand{\Kayo}{\Spl.\Ang}
 \newcommand{\Ikaw}{\Ka}
-\newcommand{\Mo}{\Ssg.\Gen}       \newcommand{\Ninyo}{\Spl.\Gen}
-\newcommand{\Iyo}{\Ssg.\Obl}      \newcommand{\Inyo}{\Spl.\Obl}
-\newcommand{\Siya}{\Tsg.\Nom}     \newcommand{\Sila}{\Tpl.\Nom}
-\newcommand{\Niya}{\Tsg.\Gen}     \newcommand{\Nila}{\Tpl.\Gen}
-\newcommand{\Kaniya}{\Tsg.\Obl}   \newcommand{\Kanila}{\Tpl.\Obl}
+\newcommand{\Mo}{\Ssg.\Ng}    \newcommand{\Ninyo}{\Spl.\Ng}
+\newcommand{\Iyo}{\Ssg.\Sa}   \newcommand{\Inyo}{\Spl.\Sa}
+\newcommand{\Siya}{\Tsg.\Ang} \newcommand{\Sila}{\Tpl.\Ang}
+\newcommand{\Niya}{\Tsg.\Ng}  \newcommand{\Nila}{\Tpl.\Ng}
+\newcommand{\Kanya}{\Tsg.\Sa} \newcommand{\Kanila}{\Tpl.\Sa}
 
 \if@expex
   \RequirePackage{expex}

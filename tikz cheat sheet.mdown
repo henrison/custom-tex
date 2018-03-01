@@ -32,13 +32,26 @@
 ## circle
 - `\path` ... `<coordinate> circle (<radius>)`
 
-## coordinates
-- POLAR: `(<angle (degrees)>:<radius>)`
-- CARTESIAN: `(<x>,<y>)`
-- RELATIVE:
-  + `++<coordinate>` (Updating)
-  + `+<coordinate>` (Non-updating)
-  + In Bézier Curves:
+# COORDINATES
+## Polar
+  `(<angle (degrees)>:<radius>)`
+
+## Cartesian
+  `(<x>,<y>)`
+
+## Relative
+  `++<coordinate>` (Updating) _OR_ `+<coordinate>` (Non-updating)
+  - In Bézier Curves:
      + First relative pt is relative to start
      + Second relative pt is relative to end
      + End relative pt is relative to start
+
+## Perpendicular
+  `(<point1> <spec> <point2>)` intersection of a horizontal and a vertical line where:
+  - `<point1>` and `<point2>` are _numeric coordinates_ or _node labels_
+  - `<spec>` is one of `|-` or `-|`
+  - `|` means: Vertical line passing through the point specified adjacent to the symbol
+  - `-` means: Horizontal line passing through the point specified adjacent to the symbol
+  - **Example:** `(2,1 |- 3,4)` and `(3,4 -| 2,1)` are identical
+    - = intersection point of horizontal through (3,4) and vertical through (2,1)
+    - = (2,4)
