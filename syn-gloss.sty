@@ -39,11 +39,11 @@
 \newcommand{\ix}[1]{{\footnotesize<}#1{\footnotesize>}}
 \newcommand{\gix}[1]{\g{\ix{#1}}}
 \newcommand{\bl}[1][~~~~~~~~]{\uline{#1}\xspace}
-\renewcommand{\*}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} % "~" hack
+\renewcommand{\*}{\textasciitilde} % reduplication
 
 % Line Drawing Macros
 \newcommand{\regline}[5][]{% {node1}{x1,y1}{x2,y2}{node2}
-  \draw[->#1] (#2).. controls +(#3) and +(#4) ..(#5);
+  \draw[->,#1] (#2).. controls +(#3) and +(#4) ..(#5);
 }
 \newcommand{\labelline}[6][above,sloped]{% {node1}{x1,y1}{x2,y2}{node2}
   \draw[->,dashed] (#2).. controls +(#3) and +(#4) ..
