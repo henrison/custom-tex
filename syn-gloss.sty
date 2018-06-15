@@ -38,8 +38,9 @@
 \newcommand{\g}[1]{\textsc{#1}}
 \newcommand{\ix}[1]{{\footnotesize<}#1{\footnotesize>}}
 \newcommand{\gix}[1]{\g{\ix{#1}}}
-\newcommand{\bl}[1][~~~~~~~~]{\uline{#1}\xspace}
+\newcommand{\blank}[1]{\uline{\phantom{#1}}\xspace}
 \renewcommand{\*}{\textasciitilde} % reduplication
+\newcommand{\+}{\textasciitilde} % reduplication
 
 % Line Drawing Macros
 \newcommand{\regline}[5][]{% {node1}{x1,y1}{x2,y2}{node2}
@@ -60,7 +61,7 @@
 % X-bar Annotation Macros
 \newcommand{\xpsub}[1]{$_{\textrm{\scriptsize #1}}$}
 \newcommand{\xbar}[1]{#1$'$}
-\newcommand{\xhead}[1]{#1\textdegree}
+\newcommand{\xhead}[1]{#1\textsuperscript{0}}
 
 % Counter and macro for running footnote example numbering
 \newcounter{FootnoteExample}
@@ -71,12 +72,19 @@
 \newleipzig{lv}{lv}{Locative Voice}
 \newleipzig{cv}{cv}{Circumstantial Voice}
 \newleipzig{rv}{reason}{``Reason'' Voice}
+\newleipzig{an}{an}{Agent Nominalization}
+\newleipzig{pn}{pn}{Patient Nominalization}
+\newleipzig{ln}{ln}{Locative Nominalization}
 \newleipzig{lk}{lk}{Linker}
 \newleipzig{stat}{stat}{Stative}
 \newleipzig{ay}{ay}{Predicate Inversion}
 \newleipzig{ger}{ger}{Gerund}
 \newleipzig{exis}{exis}{Existential}
-\newcommand{\Um}{\ix{\Av.\Pfv}}
+\newleipzig{nvol}{nvol}{Non-volitive Form}
+\newleipzig{med}{med}{Medial}
+\newcommand{\Um}{\@ifstar\@Um\@@Um}
+\newcommand{\@@Um}{\ix{\Av}}
+\newcommand{\@Um}{\ix{\Av.\Pfv}}
 \newcommand{\Nag}{\Av.\Pfv}
 \newcommand{\In}{\ix{\Pfv}}
 
