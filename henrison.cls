@@ -47,6 +47,12 @@
   \PassOptionsToPackage{showframe}{geometry}
 }
 
+\newif\if@bookclass \@bookclassfalse
+\DeclareOption{book}{
+  \@bookclasstrue
+}
+\DeclareOption{openany}{\PassOptionsToClass{openany}{book}}
+
 % Font Option
 \newif\if@regfont \@regfontfalse
 \DeclareOption{regfont}{\@regfonttrue}
@@ -55,7 +61,11 @@
 
 \ExecuteOptions{single,fancy}
 \ProcessOptions\relax
-\LoadClass{article}
+\if@bookclass
+  \LoadClass{book}
+\else
+  \LoadClass{article}
+\fi
 
 %%%%%%%%%%%%%%%
 %% PACKAGES %%%
@@ -112,7 +122,7 @@
 % BIBLIOGRAPHY
 \if@nobib
 \else
-  \RequirePackage[authoryear,sectionbib,comma]{natbib}
+  \RequirePackage[authoryear,comma]{natbib}
   \setcitestyle{aysep={}}   % Bibliography citation formatting
   \bibliographystyle{linquiry2}
 \fi
