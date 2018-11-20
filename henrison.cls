@@ -138,5 +138,11 @@
     \includegraphics[width=#1\textwidth]{#2}
   \end{figure}%
 }
+\newenvironment{standout}{
+  \begin{Sbox}\begin{minipage}
+}{
+  \end{minipage}\end{Sbox}\begin{center}\Ovalbox{\TheSbox}\end{center}
+}
+
 
 \endinput

@@ -52,11 +52,19 @@
 }
 \newcommand{\helpline}[4]{
   \regline{#1}{#2}{#3}{#4}
-  \fill[color=red]  (#1) circle (2pt)  (#4) circle (2pt);
-  \fill[color=blue] (#1)+(#2) circle (2pt) (#4)+(#3) circle (2pt);
+  \fill[color=red]  (#1) circle (2pt) +(#2) circle (2pt);
+  \fill[color=blue]  (#4) circle (2pt) +(#3) circle (2pt);
 }
 % Allows tree labels to break across multiple lines
 \newcommand{\treebr}{\tikzset{every tree node/.style={align=center,anchor=north}}}
+
+% Hacky way to get tikzpicture environments to align at the top?
+\newenvironment{tikztree}{%
+  ~\\[-0.925\baselineskip]\begin{tikzpicture}%
+}{%
+  \end{tikzpicture}%
+}
+
 
 % X-bar Annotation Macros
 \newcommand{\xpsub}[1]{$_{\textrm{\scriptsize #1}}$}
@@ -76,10 +84,12 @@
 \newleipzig{pn}{pn}{Patient Nominalization}
 \newleipzig{ln}{ln}{Locative Nominalization}
 \newleipzig{lk}{lk}{Linker}
+\newleipzig{pol}{pol}{Politeness particle}
 \newleipzig{stat}{stat}{Stative}
 \newleipzig{ay}{ay}{Predicate Inversion}
 \newleipzig{ger}{ger}{Gerund}
-\newleipzig{exis}{exis}{Existential}
+\newleipzig{rpfv}{rpfv}{Recent Perfective}
+\newleipzig{exis}{$\exists$}{Existential}
 \newleipzig{nvol}{nvol}{Non-volitive Form}
 \newleipzig{med}{med}{Medial}
 \newcommand{\Um}{\@ifstar\@Um\@@Um}
@@ -87,6 +97,9 @@
 \newcommand{\@Um}{\ix{\Av.\Pfv}}
 \newcommand{\Nag}{\Av.\Pfv}
 \newcommand{\In}{\ix{\Pfv}}
+\newcommand{\UM}[1]{\@@Um{}#1(\Pfv)}
+\newcommand{\IN}[1]{\In{}#1(\Pv)}
+
 
 \newcommand{\Ang}{\Nom}
 \newcommand{\Ng}{\Gen}
@@ -177,4 +190,5 @@
 \newcommand{\ok}{\textsuperscript{\checkmark\hspace{-2pt}}}
 \newcommand{\eh}{\textsuperscript{?}}
 
+\newcommand{\abar}{A$'$}
 \endinput
