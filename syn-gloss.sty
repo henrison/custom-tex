@@ -21,6 +21,9 @@
 \newif\if@expex \@expexfalse
 \DeclareOption{expex}{\@expextrue}
 
+\newif\if@expexhyper \@expexhypertrue
+\DeclareOption{noexpexhyper}{\@expexhyperfalse}
+
 \ExecuteOptions{single}
 \ProcessOptions\relax
 
@@ -39,7 +42,6 @@
 \newcommand{\ix}[1]{{\footnotesize<}#1{\footnotesize>}}
 \newcommand{\gix}[1]{\g{\ix{#1}}}
 \newcommand{\blank}[1]{\uline{\phantom{#1}}\xspace}
-\renewcommand{\*}{\textasciitilde} % reduplication
 \newcommand{\+}{\textasciitilde} % reduplication
 
 % Line Drawing Macros
@@ -57,7 +59,9 @@
 }
 % Allows tree labels to break across multiple lines
 \newcommand{\treebr}{\tikzset{every tree node/.style={align=center,anchor=north}}}
-
+% Non-hacky way to get tikzpicture environments to align at the top...
+% Requires that a node (probably the root) be named with \node
+\newcommand{\treerootalign}[1][root]{\tikzset{baseline=(#1.base)}}
 % Hacky way to get tikzpicture environments to align at the top?
 \newenvironment{tikztree}{%
   ~\\[-0.925\baselineskip]\begin{tikzpicture}%
@@ -67,43 +71,50 @@
 
 
 % X-bar Annotation Macros
-\newcommand{\xpsub}[1]{$_{\textrm{\scriptsize #1}}$}
+\newcommand{\xpsub}[1]{\ensuremath{_{\textrm{\scriptsize #1}}}}
 \newcommand{\xbar}[1]{#1$'$}
-\newcommand{\xhead}[1]{#1\textsuperscript{0}}
+\newcommand{\xhead}[1]{\textrm{#1}\ensuremath{^0}}
+% \newcommand{\xhead}[1]{\textrm{#1}\ensuremath{^\textrm{\scriptsize 0}}}
 
 % Counter and macro for running footnote example numbering
 \newcounter{FootnoteExample}
 \renewcommand{\theFootnoteExample}{\roman{FootnoteExample}}
 
-\newleipzig{av}{av}{Agent Voice}
-\newleipzig{pv}{pv}{Patient Voice}
-\newleipzig{lv}{lv}{Locative Voice}
-\newleipzig{cv}{cv}{Circumstantial Voice}
-\newleipzig{rv}{reason}{``Reason'' Voice}
-\newleipzig{an}{an}{Agent Nominalization}
-\newleipzig{pn}{pn}{Patient Nominalization}
-\newleipzig{ln}{ln}{Locative Nominalization}
-\newleipzig{lk}{lk}{Linker}
-\newleipzig{pol}{pol}{Politeness particle}
-\newleipzig{stat}{stat}{Stative}
-\newleipzig{ay}{ay}{Predicate Inversion}
-\newleipzig{ger}{ger}{Gerund}
-\newleipzig{rpfv}{rpfv}{Recent Perfective}
-\newleipzig{exis}{$\exists$}{Existential}
-\newleipzig{nvol}{nvol}{Non-volitive Form}
-\newleipzig{med}{med}{Medial}
+\newleipzig{av}{av}{agent voice}
+\newleipzig{pv}{pv}{patient voice}
+\newleipzig{lv}{lv}{locative voice}
+\newleipzig{cv}{cv}{circumstantial voice}
+\newleipzig{rv}{reason}{``reason'' voice}
+\newleipzig{an}{an}{agent nominalization}
+\newleipzig{pn}{pn}{patient nominalization}
+\newleipzig{ln}{ln}{locative nominalization}
+\newleipzig{lk}{lk}{linker}
+\newleipzig{pol}{pol}{politeness particle}
+\newleipzig{supl}{supl}{superlative prefix}
+\newleipzig{mir}{mir}{mirative particle}
+\newleipzig{emph}{emph}{emphatic particle}
+\newleipzig{stat}{stat}{stative}
+\newleipzig{ay}{ay}{predicate inversion}
+\newleipzig{ger}{ger}{gerund}
+\newleipzig{rpfv}{rpfv}{recent perfective}
+\newleipzig{exis}{exis}{existential verb}
+\newleipzig{nvol}{nvol}{non-volitive form}
+\newleipzig{med}{med}{medial}
+\newleipzig{pers}{p}{personal form determiner}
+\newleipzig{ord}{ord}{ordinal prefix}
+
 \newcommand{\Um}{\@ifstar\@Um\@@Um}
 \newcommand{\@@Um}{\ix{\Av}}
 \newcommand{\@Um}{\ix{\Av.\Pfv}}
 \newcommand{\Nag}{\Av.\Pfv}
 \newcommand{\In}{\ix{\Pfv}}
 \newcommand{\UM}[1]{\@@Um{}#1(\Pfv)}
-\newcommand{\IN}[1]{\In{}#1(\Pv)}
+\newcommand{\IN}[1]{\In{}#1[\Pv]}
 
-
-\newcommand{\Ang}{\Nom}
-\newcommand{\Ng}{\Gen}
-\newcommand{\Sa}{\Obl}
+\newcommand{\Mga}{\Pl}
+\newcommand{\Ang}{\Nom}       \newcommand{\Si}{\Ang.\Pers}
+\newcommand{\Ng}{\Gen}        \newcommand{\Ni}{\Ng.\Pers}
+\newcommand{\Sa}{\Obl}        \newcommand{\Kay}{\Sa.\Pers}
 
 \newcommand{\Ako}{\Fsg.\Ang}  \newcommand{\Kami}{\Fpl.\Excl.\Ang}
                               \newcommand{\Tayo}{\Fpl.\Incl.\Ang}
@@ -142,6 +153,23 @@
     #1
   }}
   \newcommand{\glfi}{\glft Intended: }
+  \if@expexhyper
+    % Make expex play with hyperref: https://tex.stackexchange.com/a/527557
+    \RequirePackage{hyperref}
+    \RequirePackage{etoolbox}
+    % Patch expex label definition commands
+    \pretocmd\deftag{\hypertarget{#2}{}\label{#2}}{}{\fail}%
+    \patchcmd{\ep@putlabel@b}
+        {\deftaglabel{\@optionaltag}}
+        {\hypertarget{\@localextag.\@optionaltag}{}\label{\@localextag.\@optionaltag}\deftaglabel{\@optionaltag}}
+        {}
+        {\fail}%
+    % Redefine expex getref commands
+    \let\old@getref\getref
+    \def\getref#1{\hyperlink{#1}{\old@getref{#1}}}%
+    \let\old@getfullref\getfullref
+    \def\getfullref#1{\hyperlink{#1}{\old@getfullref{#1}}}%
+  \fi
 \else % Use gb4e
   \RequirePackage{gb4e}
   \noautomath % Disable gb4e automath

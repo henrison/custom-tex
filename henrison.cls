@@ -63,6 +63,7 @@
 \ProcessOptions\relax
 \if@bookclass
   \LoadClass{book}
+  \setcounter{secnumdepth}{3}
 \else
   \LoadClass{article}
 \fi
@@ -102,11 +103,11 @@
 
 % MISCELLANEOUS THINGS
 \RequirePackage{graphicx}
-\RequirePackage{hyperref}
 \RequirePackage{booktabs}
-\RequirePackage{xcolor}
+\RequirePackage[table]{xcolor}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{fancybox}
+\RequirePackage{hyperref}
 
 % booktabs toprule spacing (for captions)
 \setlength{\abovetopsep}{5pt}
@@ -122,7 +123,7 @@
 % BIBLIOGRAPHY
 \if@nobib
 \else
-  \RequirePackage[authoryear,comma]{natbib}
+  \RequirePackage[authoryear]{natbib}
   \setcitestyle{aysep={}}   % Bibliography citation formatting
   \bibliographystyle{linquiry2}
 \fi
