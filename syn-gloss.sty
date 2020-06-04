@@ -155,6 +155,8 @@
   \newcommand{\glfi}{\glft Intended: }
   \if@expexhyper
     % Make expex play with hyperref: https://tex.stackexchange.com/a/527557
+    % NOTE: Introduces a slight bug where extra vertical space is introduced between examples
+    %       if there is no parbreak between `\xe` and a following `\ex<>`/`\pex<>` command
     \RequirePackage{hyperref}
     \RequirePackage{etoolbox}
     % Patch expex label definition commands
