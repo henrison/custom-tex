@@ -93,13 +93,15 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{setspace}
 
+\newlength{\myparskip}
 \if@abstract
   \setlength{\parindent}{15pt}
-  \setlength{\parskip}{0pt}
+  \setlength{\myparskip}{0pt}
 \else
   \setlength{\parindent}{30pt}
-  \setlength{\parskip}{5pt}
+  \setlength{\myparskip}{5pt}
 \fi
+\setlength{\parskip}{\myparskip}
 
 % MISCELLANEOUS THINGS
 \RequirePackage{graphicx}
@@ -144,6 +146,11 @@
 }{
   \end{minipage}\end{Sbox}\begin{center}\Ovalbox{\TheSbox}\end{center}
 }
-
-
+\newenvironment{miniblock}[1][\textwidth]%
+  {\noindent\begin{minipage}{#1}\setlength{\parskip}{\myparskip}}%
+  {\end{minipage}}
+% Non-breaking multicols environment for side-by-side examples
+\newenvironment{multiblock}[1][\textwidth]%
+  {\begin{miniblock}[#1]\begin{multicols}}%
+  {\end{multicols}\end{miniblock}}
 \endinput

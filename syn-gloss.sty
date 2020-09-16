@@ -8,7 +8,6 @@
 \RequirePackage{tikz-qtree}
 \RequirePackage{multicol}
 \RequirePackage{xspace}
-\RequirePackage{setspace}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{textcomp}
 \RequirePackage{amssymb}
@@ -28,7 +27,7 @@
 \ProcessOptions\relax
 
 \newcommand{\glp}[3][ ]{\textit{#2}#1`#3'}
-\newcommand{\extitle}[1]{\textbf{#1}}
+\newcommand{\extitle}[1]{\textsc{#1}}
 
 % Abbreviations listing
 \newcommand{\abrsep}{$=$}
@@ -73,7 +72,7 @@
 % X-bar Annotation Macros
 \newcommand{\xpsub}[1]{\ensuremath{_{\textrm{\scriptsize #1}}}}
 \newcommand{\xbar}[1]{#1$'$}
-\newcommand{\xhead}[1]{\textrm{#1}\ensuremath{^0}}
+\newcommand{\xhead}[1]{#1$^0$}
 % \newcommand{\xhead}[1]{\textrm{#1}\ensuremath{^\textrm{\scriptsize 0}}}
 
 % Counter and macro for running footnote example numbering
@@ -193,6 +192,7 @@
     }
   \else
     % Automatically sets single spacing for examples.
+    \RequirePackage{setspace}
     \let\oldexe\exe
     \def\exe{\oldexe \singlespacing}
     \newenvironment{exxe}[1][(234)]{
