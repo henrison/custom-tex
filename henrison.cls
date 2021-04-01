@@ -8,6 +8,9 @@
 \DeclareOption{11pt}{\PassOptionsToClass{11pt}{article}}
 \DeclareOption{12pt}{\PassOptionsToClass{12pt}{article}}
 
+\newif\if@pdfa \@pdfafalse
+\DeclareOption{pdfa}{\@pdfatrue}
+
 % Line Spacing Options
 \DeclareOption{single}{
   \PassOptionsToPackage{singlespacing}{setspace}
@@ -56,6 +59,8 @@
 % Font Option
 \newif\if@regfont \@regfontfalse
 \DeclareOption{regfont}{\@regfonttrue}
+\newif\if@times \@timesfalse
+\DeclareOption{times}{\@timestrue}
 
 \DeclareOption*{\ClassWarning{henrison}{Unknown option `\CurrentOption'. Use the geometry command to change paper size.}}
 
@@ -72,6 +77,10 @@
 %% PACKAGES %%%
 %%%%%%%%%%%%%%%
 % PAGE LAYOUT
+\if@pdfa
+  \RequirePackage[a-1b]{pdfx}
+\fi
+
 \RequirePackage[margin=1in,letterpaper]{geometry}
 \RequirePackage{fancyhdr}
 
@@ -85,10 +94,14 @@
 \fi
 
 % TYPOGRAPHY and PARAGRAPH FORMATTING
-\if@regfont
-  \RequirePackage{mathpazo}
+\if@times
+  \RequirePackage{mathptmx}
 \else
-  \RequirePackage[sc,osf]{mathpazo}
+  \if@regfont
+    \RequirePackage{mathpazo}
+  \else
+    \RequirePackage[sc,osf]{mathpazo}
+  \fi
 \fi
 \RequirePackage[T1]{fontenc}
 \RequirePackage{setspace}
@@ -153,4 +166,13 @@
 \newenvironment{multiblock}[1][\textwidth]%
   {\begin{miniblock}[#1]\begin{multicols}}%
   {\end{multicols}\end{miniblock}}
+
+% Custom IPA command for typesetting IPA from unicode
+\if@times
+  \newcommand{\textipa}[1]{#1}
+\else
+  \newcommand{\textipa}[1]{{\fontfamily{qpl}\selectfont#1}}
+\fi
+% \newcommand{\textipa}[1]{{\fontfamily{qzc}\selectfont#1}}
+
 \endinput

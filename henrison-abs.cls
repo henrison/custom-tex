@@ -14,11 +14,10 @@
   \@nobibtrue%
 }
 
-\newif\if@times \@timesfalse
-\DeclareOption{times}{\@timestrue}
-
 \newif\if@squeeze \@squeezefalse
 \DeclareOption{squeeze}{\@squeezetrue}
+\DeclareOption{times}{\PassOptionsToClass{\CurrentOption}{henrison}}
+
 
 \DeclareOption*{\ClassWarning{henrison}{Unknown option `\CurrentOption'. Use the geometry command to change paper size.}}
 
@@ -41,10 +40,6 @@
   \renewcommand{\bibsection}{\abssec{Selected References}~\vspace{-3ex}}
   \renewcommand{\bibfont}{\small}
   \setlength{\bibsep}{0pt}
-\fi
-
-\if@times
-  \RequirePackage{mathptmx}
 \fi
 
 \setlength{\parindent}{15pt}
