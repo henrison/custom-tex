@@ -6,6 +6,7 @@
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tikz-qtree}
+\usetikzlibrary{arrows}
 \RequirePackage{multicol}
 \RequirePackage{xspace}
 \RequirePackage[normalem]{ulem}
@@ -41,6 +42,7 @@
 \newcommand{\ix}[1]{{\footnotesize<}#1{\footnotesize>}}
 \newcommand{\gix}[1]{\g{\ix{#1}}}
 \newcommand{\blank}[1]{\uline{\phantom{#1}}\xspace}
+\newcommand{\trace}[1]{<\textit{#1}>}
 \newcommand{\+}{\textasciitilde} % reduplication
 
 % Line Drawing Macros
@@ -56,11 +58,17 @@
   \fill[color=red]  (#1) circle (2pt) +(#2) circle (2pt);
   \fill[color=blue]  (#4) circle (2pt) +(#3) circle (2pt);
 }
+\newcommand{\agrline}[3][-0.5]{%
+  \draw[*-*,rounded corners] (#3.south) -- ++(0,#1) -| (#2);%
+}
+\newcommand{\phasearc}[3][80]{%
+  \draw[double,semithick] ([shift={(#3)}]#2) arc (#1:{#1+120}:3);%
+}
 % Allows tree labels to break across multiple lines
 \newcommand{\treebr}{\tikzset{every tree node/.style={align=center,anchor=north}}}
 % Non-hacky way to get tikzpicture environments to align at the top...
 % Requires that a node (probably the root) be named with \node
-\newcommand{\treerootalign}[1][root]{\tikzset{baseline=(#1.base)}}
+\newcommand{\treerootalign}[1][root.base]{\tikzset{baseline=(#1)}}
 % Hacky way to get tikzpicture environments to align at the top?
 \newenvironment{tikztree}{%
   ~\\[-0.925\baselineskip]\begin{tikzpicture}%

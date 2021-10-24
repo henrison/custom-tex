@@ -169,7 +169,7 @@
 
 % Custom IPA command for typesetting IPA from unicode
 \if@times
-  \newcommand{\textipa}[1]{#1}
+  \newcommand{\textipa}[1]{{\fontfamily{qtm}\selectfont#1}}
 \else
   \newcommand{\textipa}[1]{{\fontfamily{qpl}\selectfont#1}}
 \fi
