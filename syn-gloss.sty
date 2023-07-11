@@ -4,7 +4,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\RequirePackage[T1]{fontenc}
 \RequirePackage{tikz-qtree}
 \usetikzlibrary{arrows}
 \RequirePackage{multicol}
@@ -39,10 +38,10 @@
 % Example Macros
 \newcommand{\exsep}{\vspace{0.5em}}
 \newcommand{\g}[1]{\textsc{#1}}
-\newcommand{\ix}[1]{{\footnotesize<}#1{\footnotesize>}}
+\newcommand{\ix}[1]{{\footnotesize\textless}#1{\footnotesize\textgreater}}
 \newcommand{\gix}[1]{\g{\ix{#1}}}
 \newcommand{\blank}[1]{\uline{\phantom{#1}}\xspace}
-\newcommand{\trace}[1]{<\textit{#1}>}
+\newcommand{\trace}[1]{\textless\textit{#1}\textgreater}
 \newcommand{\+}{\textasciitilde} % reduplication
 
 % Line Drawing Macros

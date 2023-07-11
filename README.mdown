@@ -1,1 +1,8 @@
 Henrison Hsieh's custom LaTeX files and other related things
+
+`kpsewhich -var-value TEXMF`
+`ln -sF <source> <target>`
+Targets:
+- TEXMF/bibtex/bib
+- TEXMF/bibtex/bst
+- TEXMF/tex/latex/template

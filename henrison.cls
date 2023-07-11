@@ -117,6 +117,7 @@
 \setlength{\parskip}{\myparskip}
 
 % MISCELLANEOUS THINGS
+\RequirePackage[hyphens,spaces,obeyspaces]{url}
 \RequirePackage{graphicx}
 \RequirePackage{booktabs}
 \RequirePackage[table]{xcolor}
@@ -174,5 +175,7 @@
   \newcommand{\textipa}[1]{{\fontfamily{qpl}\selectfont#1}}
 \fi
 % \newcommand{\textipa}[1]{{\fontfamily{qzc}\selectfont#1}}
+% qpl Palatino
+% qtm Times
 
 \endinput
