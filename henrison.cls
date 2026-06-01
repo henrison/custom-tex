@@ -98,10 +98,11 @@
   \RequirePackage{mathptmx}
 \else
   \if@regfont
-    \RequirePackage{mathpazo}
+    \RequirePackage{newpxtext}
   \else
-    \RequirePackage[sc,osf]{mathpazo}
+    \RequirePackage[largesc,osf]{newpxtext}
   \fi
+  \RequirePackage{newpxmath}
 \fi
 \RequirePackage[T1]{fontenc}
 \RequirePackage{setspace}
@@ -172,7 +173,7 @@
 \if@times
   \newcommand{\textipa}[1]{{\fontfamily{qtm}\selectfont#1}}
 \else
-  \newcommand{\textipa}[1]{{\fontfamily{qpl}\selectfont#1}}
+  % \newcommand{\textipa}[1]{{\fontfamily{qpl}\selectfont#1}}
 \fi
 % \newcommand{\textipa}[1]{{\fontfamily{qzc}\selectfont#1}}
 % qpl Palatino

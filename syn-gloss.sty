@@ -10,7 +10,7 @@
 \RequirePackage{xspace}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{textcomp}
-\RequirePackage{amssymb}
+\RequirePackage{pifont}
 \RequirePackage{leipzig}
 
 \newif\if@single \@singlefalse
@@ -184,7 +184,7 @@
   \let\eachwordtwo=\small   % Gloss-Level
   \let\eachwordthree=\small % Gloss-Level if Morpheme Level is present
 
-  \newcommand{\gls}[2][]{\glt{`#2'\hfill\textit{#1}}}
+  \newcommand{\mygls}[2][]{\glt{`#2'\hfill\textit{#1}}}
   \newcommand{\gli}[2][]{\glt{Intended: `#2'#1}}
   \newcommand{\glf}[3][]{\glt{`#2'\footnote{#3}\hfill\textit{#1}}}
 
@@ -223,8 +223,9 @@
   \fi
 \fi
 
-% Some auxiliary judgement annotations (requires amssymb)
-\newcommand{\ok}{\textsuperscript{\checkmark\hspace{-2pt}}}
+% Some auxiliary judgement annotations (requires pifont)
+% Used to use amssymb, but that seems to conflict with some XeLaTeX stuff??
+\newcommand{\ok}{\textsuperscript{\ding{51}\hspace{-2pt}}}
 \newcommand{\eh}{\textsuperscript{?}}
 
 \newcommand{\abar}{\texorpdfstring{A$'$}{A'}}
